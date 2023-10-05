@@ -13,7 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $csvRows = explode("\n", $csvData);
                 
                 $isFirstRow = true;
-                $sum = 0;
+
+                $validNumberSum = [];
+                $updatedNumberSum = [];
+                $invalidNumberSum = [];
                 
                 foreach ($csvRows as $row) {
                     $row = trim($row);
@@ -27,17 +30,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $phoneNumber = trim($fields[1]);
 
-                    $pattern = '/^27\d{9}$/';
+                    $validPattern = '/^27\d{9}$/';
+                    $updatedPattern = '/^27\d{9}_DELETED_\d+$/';
                     
-                    if (preg_match($pattern, $phoneNumber)) {
-                        $validNumber = (int) $phoneNumber;
-                        $sum += $validNumber;
+                    if (preg_match($validPattern, $phoneNumber)) {
+                        $validNumber = $phoneNumber;
+                        array_push($validNumberSum, $validNumber);
                         echo "Numero valido: $phoneNumber<br>";
-                    } else {
+                    } elseif (preg_match($updatedPattern, $phoneNumber)) {
+                        $updatedNumber = $phoneNumber;
+                        array_push($updatedNumberSum, $updatedNumber);
+                        echo "Numero aggiornato: $phoneNumber<br>";
+                    }
+                    else {
+                        $invalidNumber = $phoneNumber;
+                        array_push($invalidNumberSum, $invalidNumber);
                         echo "Numero non valido: $phoneNumber<br>";
                     }
                 }
-                echo "Somma dei numeri validi: $sum";
+                echo "<br>";
+                echo "Somma dei numeri validi:" . count($validNumberSum);
+                echo "<br>";
+                echo "Somma dei numeri aggiornati:" . count($updatedNumberSum);
+                echo "<br>";
+                echo "Somma dei numeri non validi:" . count($invalidNumberSum);
             } else {
                 echo "Il file deve essere un CSV valido.";
             }
