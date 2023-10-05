@@ -1,4 +1,6 @@
 <?php
+$sum = 0;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["file"])) {
         $file = $_FILES["file"];
@@ -12,16 +14,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $csvRows = explode("\n", $csvData);
 
+                $isFirstRow = true;
                 foreach ($csvRows as $row) {
                     $row = trim($row);
 
+                    if ($isFirstRow) {
+                        $isFirstRow = false;
+                        continue;
+                    }
+
+                    $fields = explode(",", $row);
+                    $phoneNumber = trim($fields[1]);
+
                     $pattern = '/^(\+27\d{9})$/';
-                    if (preg_match($pattern, $row)) {
-                        echo "Numero valido: $row<br>";
+                    if (preg_match($pattern, $phoneNumber)) {
+                        $validNumber = (int) $phoneNumber;
+                        $sum += $validNumber;
+                        echo "Numero valido: $phoneNumber<br>";
                     } else {
-                        echo "Numero non valido: $row<br>";
+                        echo "Numero non valido: $phoneNumber<br>";
                     }
                 }
+                echo "Somma dei numeri validi: $sum";
             } else {
                 echo "Il file deve essere un CSV valido.";
             }
@@ -32,3 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Nessun file è stato caricato.";
     }
 }
+
+?>
