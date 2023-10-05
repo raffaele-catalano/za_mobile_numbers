@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $numero = $validNumber;
                         $stmt->execute();
                     } elseif (preg_match($updatedPattern, $phoneNumber)) {
-                        $updatedNumber = $phoneNumber;
+                        $updatedNumber = preg_replace('/_DELETED_\d+$/', '', $phoneNumber);
                         array_push($updatedNumberSum, $updatedNumber);
                         echo "Numero aggiornato: $phoneNumber<br>";
 
@@ -62,8 +62,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $stmt->bindParam(':tipo', $tipo);
                         $stmt->bindParam(':numero', $numero);
 
-                        $tipo = 'aggiornato';
+                        $tipo = 'valido';
                         $numero = $updatedNumber;
+                        $stmt->execute();
+
+                        $stmt = $db->prepare("INSERT INTO registro (id_num, dettagli, data_modifica) VALUES (:id_num, :dettagli, DATETIME('now'))");
+                        $stmt->bindParam(':id_num', $id_num);
+                        $stmt->bindParam(':dettagli', $dettagli);
+
+                        $id_num = $db->lastInsertId(); // Ottieni l'ID appena inserito nella tabella numeri
+                        $dettagli = 'Eliminato _DELETED_d+';
                         $stmt->execute();
                     } else {
                         $invalidNumber = $phoneNumber;
