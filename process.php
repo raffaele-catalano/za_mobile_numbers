@@ -1,20 +1,20 @@
 <?php
-$sum = 0;
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["file"])) {
         $file = $_FILES["file"];
-
+        
         if ($file["error"] === UPLOAD_ERR_OK) {
             $tempFilePath = $file["tmp_name"];
-
+            
             $fileType = mime_content_type($tempFilePath);
             if ($fileType === "text/csv" || $fileType === "application/csv" || $fileType === "application/vnd.ms-excel") {
                 $csvData = file_get_contents($tempFilePath);
-
+                
                 $csvRows = explode("\n", $csvData);
-
+                
                 $isFirstRow = true;
+                $sum = 0;
+                
                 foreach ($csvRows as $row) {
                     $row = trim($row);
 
@@ -24,9 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
 
                     $fields = explode(",", $row);
+
                     $phoneNumber = trim($fields[1]);
 
-                    $pattern = '/^(\+27\d{9})$/';
+                    $pattern = '/^27\d{9}$/';
+                    
                     if (preg_match($pattern, $phoneNumber)) {
                         $validNumber = (int) $phoneNumber;
                         $sum += $validNumber;
@@ -46,5 +48,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Nessun file è stato caricato.";
     }
 }
-
 ?>
