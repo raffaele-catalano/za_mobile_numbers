@@ -44,25 +44,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if (preg_match($validPattern, $phoneNumber)) {
                         $validNumber = $phoneNumber;
                         array_push($validNumberSum, $validNumber);
-                        echo "Numero valido: $phoneNumber<br>";
+                        // echo "Numero valido: $phoneNumber<br>";
 
                         $stmt = $db->prepare("INSERT INTO numeri (tipo, numero) VALUES (:tipo, :numero)");
                         $stmt->bindParam(':tipo', $tipo);
                         $stmt->bindParam(':numero', $numero);
 
-                        $tipo = 'valido';
+                        $tipo = 'valid';
                         $numero = $validNumber;
                         $stmt->execute();
                     } elseif (preg_match($updatedPattern, $phoneNumber)) {
                         $updatedNumber = preg_replace('/_DELETED_\d+$/', '', $phoneNumber);
                         array_push($updatedNumberSum, $updatedNumber);
-                        echo "Numero aggiornato: $phoneNumber<br>";
+                        // echo "Numero aggiornato: $phoneNumber<br>";
 
                         $stmt = $db->prepare("INSERT INTO numeri (tipo, numero) VALUES (:tipo, :numero)");
                         $stmt->bindParam(':tipo', $tipo);
                         $stmt->bindParam(':numero', $numero);
 
-                        $tipo = 'valido';
+                        $tipo = 'valid';
                         $numero = $updatedNumber;
                         $stmt->execute();
 
@@ -76,13 +76,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     } else {
                         $invalidNumber = $phoneNumber;
                         array_push($invalidNumberSum, $invalidNumber);
-                        echo "Numero non valido: $phoneNumber<br>";
+                        // echo "Numero non valido: $phoneNumber<br>";
 
                         $stmt = $db->prepare("INSERT INTO numeri (tipo, numero) VALUES (:tipo, :numero)");
                         $stmt->bindParam(':tipo', $tipo);
                         $stmt->bindParam(':numero', $numero);
 
-                        $tipo = 'non valido';
+                        $tipo = 'invalid';
                         $numero = $invalidNumber;
                         $stmt->execute();
                     }
@@ -91,10 +91,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // chiudere la connessione al database
                 $db = null;
                 
-                echo "<br>";
-                echo "Somma dei numeri validi: " . count($validNumberSum) . "<br>";
-                echo "Somma dei numeri aggiornati: " . count($updatedNumberSum) . "<br>";
-                echo "Somma dei numeri non validi: " . count($invalidNumberSum) . "<br>";
+                // echo "<br>";
+                // echo "Somma dei numeri validi: " . count($validNumberSum) . "<br>";
+                // echo "Somma dei numeri aggiornati: " . count($updatedNumberSum) . "<br>";
+                // echo "Somma dei numeri non validi: " . count($invalidNumberSum) . "<br>";
+
+                header("Location: view.php");
+                exit;
             } else {
                 echo "Il file deve essere un CSV valido.";
             }
