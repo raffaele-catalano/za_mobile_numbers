@@ -1,6 +1,6 @@
 South Africa Mobile Numbers
 ===
-## Technologie: 
+## Tecnologie: 
 <p>
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=php,sqlite,js,css,html,md,github&perline=7" />
