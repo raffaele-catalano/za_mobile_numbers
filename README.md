@@ -14,7 +14,7 @@ South Africa Mobile Numbers
 1. Scaricare la cartella;
 2. Estrarre il contenuto dell'archivio `ZIP` nella *directory* principale del server web locale (es. `htdocs` in MAMP o `www` in XAMPP);
 3. Assicurarsi che il server web locale sia in esecuzione;
-4. Aprire il browser web alla pagina: <a href="http://localhost/za-mobile-numbers.main">http://localhost/za-mobile-numbers.main</a>.
+4. Aprire il browser web alla pagina: <a href="http://localhost/za_mobile_numbers-main">http://localhost/za_mobile_numbers-main</a>.
 
 ## Struttura del Progetto:
 | File | Descrizione |
@@ -25,5 +25,5 @@ South Africa Mobile Numbers
 | `view.php` | Pagina finale dell'applicazione che visualizza l'elenco dei numeri e offre opzioni di filtro |
 | `api.php` | Gestisce le richieste API per ottenere i numeri in base al filtro selezionato |
 | `loadnumbers.js` | Contiene la funzione che gestisce la chiamata API per i numeri e la paginazione della tabella in cui questi vengono stampati |
-| `za_numbers.db` | Il database SQLite che viene generato in seguito all'upload del file `.csv`. Consta di due tabella, una principale `numeri` ed una secondaria `registro`. Le due tabelle hanno una relazione `one to many` |
-| `assets/` | Directory contenente file di stile CSS, immagini e altri asset tra cui il file `.csv` utilizzato |
+| `za_numbers.db` | Il database SQLite che viene generato in seguito all'upload del file `.csv`.<br>Consta di due tabelle, una principale `numeri` ed una secondaria `registro`. Le due tabelle hanno una relazione `one to many` |
+| `assets/` | Directory contenente foglio di stile CSS, immagini e altri asset tra cui il file `.csv` utilizzato |
