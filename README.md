@@ -1,17 +1,18 @@
 South Africa Mobile Numbers
 ===
 ## Technologie: 
-- `PHP`
-- `Javascript`
-- `CSS`
-- `HTML`
+<p>
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=php,sqlite,js,css,html,md,github&perline=7" />
+  </a>
+</p>
 
 ## Requisiti:
 - Server web locale per eseguire l'applicazione;
 - PHP 8.0 o versioni successive installate sul server.
 
 ## Installazione: 
-1. Scaricare la cartella;
+1. <a href="https://github.com/raffaele-catalano/za_mobile_numbers/archive/refs/heads/main.zip">Scaricare</a> la cartella;
 2. Estrarre il contenuto dell'archivio `ZIP` nella *directory* principale del server web locale (es. `htdocs` in MAMP o `www` in XAMPP);
 3. Assicurarsi che il server web locale sia in esecuzione;
 4. Aprire il browser web alla pagina: <a href="http://localhost/za_mobile_numbers-main">http://localhost/za_mobile_numbers-main</a>.
