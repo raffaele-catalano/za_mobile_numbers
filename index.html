@@ -9,17 +9,21 @@
     <link rel="shortcut icon" href="./assets/img/za_favicon.png" type="png">
     <!-- style -->
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <!--  -->
     <title>Za Mobile Numbers</title>
 </head>
 
 <body>
-    
-    <div class="card bg-dark-subtle m-auto mt-3" style="width: 20rem;">
+    <div class="container d-flex align-items-center justify-content-center mt-3 mb-4">
+        <img class="me-2" src="./assets/img/za_favicon.png" alt="sout_africa">
+        <h1 class="text-center">South African Numbers Checkers</h1>
+    </div>
+    <div class="card m-auto mt-3" style="width: 20rem;">
         <div class="card-body">
-            <h3 class="card-title text-center">Seleziona un file CSV</h3>
+            <h4 class="card-title text-center">Seleziona un file CSV</h4>
             <form action="process.php" method="post" enctype="multipart/form-data">
                 <input class="form-control my-3" type="file" name="file" id="file" accept=".csv" required>
-                <button class="btn btn-success" type="submit">Carica</button>
+                <button class="btn btn-primary w-25" type="submit">Carica</button>
             </form>
         </div>
 
