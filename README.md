@@ -1,75 +1,29 @@
 South Africa Mobile Numbers
 ===
-> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quas aspernatur, veniam amet nulla magni ratione, velit ea architecto deleniti laboriosam ipsa vero quaerat hic et accusantium minus modi dolores!
-<!-- Abstract:xxx
-## Papar Information
-- Title:  `paper name`
-- Authors:  `A`,`B`,`C`
-- Preprint: [https://arxiv.org/abs/xx]()
-- Full-preprint: [paper position]()
-- Video: [video position]()
+## Technologie: 
+- `PHP`
+- `Javascript`
+- `CSS`
+- `HTML`
 
-## Install & Dependence
-- python
-- pytorch
-- numpy
+## Requisiti:
+- Server web locale per eseguire l'applicazione;
+- PHP 8.0 o versioni successive installate sul server.
 
-## Dataset Preparation
-| Dataset | Download |
+## Installazione: 
+1. Scaricare la cartella;
+2. Estrarre il contenuto dell'archivio `ZIP` nella *directory* principale del server web locale (es. `htdocs` in MAMP o `www` in XAMPP);
+3. Assicurarsi che il server web locale sia in esecuzione;
+4. Aprire il browser web alla pagina: <a href="http://localhost/za-mobile-numbers.main">http://localhost/za-mobile-numbers.main</a>.
+
+## Struttura del Progetto:
+| File | Descrizione |
 | ---     | ---   |
-| dataset-A | [download]() |
-| dataset-B | [download]() |
-| dataset-C | [download]() |
-
-## Use
-- for train
-  ```
-  python train.py
-  ```
-- for test
-  ```
-  python test.py
-  ```
-## Pretrained model
-| Model | Download |
-| ---     | ---   |
-| Model-1 | [download]() |
-| Model-2 | [download]() |
-| Model-3 | [download]() |
-
-
-## Directory Hierarchy
-```
-|—— assets
-|    |—— img
-|        |—— za_favicon.png
-|—— index.html
-```
-## Code Details
-### Tested Platform
-- software
-  ```
-  OS: Debian unstable (May 2021), Ubuntu LTS
-  Python: 3.8.5 (anaconda)
-  PyTorch: 1.7.1, 1.8.1
-  ```
-- hardware
-  ```
-  CPU: Intel Xeon 6226R
-  GPU: Nvidia RTX3090 (24GB)
-  ```
-### Hyper parameters
-```
-```
-## References
-- [paper-1]()
-- [paper-2]()
-- [code-1](https://github.com)
-- [code-2](https://github.com)
-  
-## License
-
-## Citing
-If you use xxx,please use the following BibTeX entry.
-```
-``` -->
+| `index.html` | Pagina iniziale dell'applicazione che visualizza un form di *upload* di un file che sia necessariamente `.csv` |
+| `database.php` | Stabilisce la creazione, tramite protocollo `PDO`, di un nuovo database `SQLite` |
+| `process.php` | Processa i dati del file `.csv` e permette la genesi del database SQLite (`za_numbers.db`) e lo *storage* dei dati al suo interno. Inoltre effettua la correzione dei numeri cosiddetti *'updated'*, i quali vengono convertiti in *'valid'* |
+| `view.php` | Pagina finale dell'applicazione che visualizza l'elenco dei numeri e offre opzioni di filtro |
+| `api.php` | Gestisce le richieste API per ottenere i numeri in base al filtro selezionato |
+| `loadnumbers.js` | Contiene la funzione che gestisce la chiamata API per i numeri e la paginazione della tabella in cui questi vengono stampati |
+| `za_numbers.db` | Il database SQLite che viene generato in seguito all'upload del file `.csv`. Consta di due tabella, una principale `numeri` ed una secondaria `registro`. Le due tabelle hanno una relazione `one to many` |
+| `assets/` | Directory contenente file di stile CSS, immagini e altri asset tra cui il file `.csv` utilizzato |
