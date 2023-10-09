@@ -3,8 +3,8 @@ try {
     $db = new PDO('sqlite:za_numbers.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $db->exec("DROP TABLE IF EXISTS numeri");
-    $db->exec("DROP TABLE IF EXISTS registro");
+    // $db->exec("DROP TABLE IF EXISTS numeri");
+    // $db->exec("DROP TABLE IF EXISTS registro");
 
     // Tabella dei numeri
     $db->exec("CREATE TABLE IF NOT EXISTS numeri (
