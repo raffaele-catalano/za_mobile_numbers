@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $stmt->bindParam(':id_num', $id_num);
                         $stmt->bindParam(':dettagli', $dettagli);
 
-                        $id_num = $db->lastInsertId(); // Ottieni l'ID appena inserito nella tabella numeri
+                        $id_num = $db->lastInsertId(); // ottieni l'ID appena inserito nella tabella numeri
                         $dettagli = 'Eliminato _DELETED_d+';
                         $stmt->execute();
                     } else {

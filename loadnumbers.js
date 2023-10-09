@@ -23,7 +23,7 @@ document.getElementById("filterSelect").addEventListener("change", function () {
     loadNumbers(selectedFilter);
 });
 
-// Listener per il click sulla paginazione precedente
+// listener per il click sulla paginazione precedente
 document.getElementById("prevPage").addEventListener("click", () => {
     if (currentPage > 1) {
         currentPage--;
@@ -72,5 +72,5 @@ function renderData() {
     }
 }
 
-// Carica tutti i numeri all'avvio con filtro "all"
+// carica tutti i numeri all'avvio con filtro "all"
 loadNumbers("all");

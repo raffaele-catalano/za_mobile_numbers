@@ -39,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody id="tbody">
-                        <!-- qui vengono inseriti i dati tramite JavaScript -->
+                        <!-- qui vengono inseriti i dati tramite loadnumbers.js -->
                     </tbody>
                 </table>
                 <!-- pagination -->
@@ -50,7 +50,7 @@
                                 <span aria-hidden="true"><i class="fa-solid fa-backward"></i></span>
                             </a>
                         </li>
-                        <!-- Le pagine verranno create dinamicamente qui -->
+                        <!-- le pagine verranno create dinamicamente qui -->
                         <li class="page-item" id="nextPage">
                             <a class="page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true"><i class="fa-solid fa-forward"></i></span>
